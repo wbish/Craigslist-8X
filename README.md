@@ -1,4 +1,4 @@
 C8X
 ===
 
-Windows Store App: C8X for Craigslist
+Craigslist 8X is a Craiglist client application originally written for Windows 8.
