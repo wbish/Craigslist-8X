@@ -1,0 +1,21 @@
+﻿<UserControl
+    x:Class="WB.Craigslist8X.View.SaveSearch"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WB.Craigslist8X.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006">
+
+    <Grid Width="350" Margin="20,10,20,20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Save Search" Style="{StaticResource SettingsHeaderStyle}" />
+
+        <TextBlock Grid.Row="1" Text="Give your search a name" Style="{StaticResource BaselineTextStyle}" TextAlignment="Justify" LineHeight="26" FontSize="18" />
+        <TextBox Grid.Row="2" Margin="0,20,0,0" Text="{Binding SearchName, Mode=TwoWay}" />
+    </Grid>
+</UserControl>

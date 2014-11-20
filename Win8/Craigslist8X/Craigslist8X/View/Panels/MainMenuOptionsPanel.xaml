@@ -1,0 +1,214 @@
+﻿<UserControl
+    x:Class="WB.Craigslist8X.View.MainMenuOptionsPanel"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WB.Craigslist8X.View"
+    xmlns:msad="using:Microsoft.Advertising.WinRT.UI"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006">
+
+    <UserControl.Resources>
+        <Style x:Key="MainPanelHeader" BasedOn="{StaticResource HeaderTextStyle}" TargetType="TextBlock">
+            <Setter Property="Margin" Value="20,15,0,0" />
+            <Setter Property="TextTrimming" Value="WordEllipsis" />
+            <Setter Property="TextWrapping" Value="NoWrap" />
+            <Setter Property="Foreground" Value="{StaticResource AppThemeSecondary}" />
+            <Setter Property="FontSize" Value="58" />
+        </Style>
+
+        <Style x:Key="MenuOptionNavigateStyle"  TargetType="ButtonBase">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Foreground" Value="Black" />
+            <Setter Property="FontFamily" Value="Segoe UI Light" />
+            <Setter Property="HorizontalAlignment" Value="Stretch" />
+            <Setter Property="Margin" Value="0,5,0,5" />
+            <Setter Property="Padding" Value="15,0,5,0" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ButtonBase">
+                        <Border Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}">
+                            <Grid Margin="{TemplateBinding Margin}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="40" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="30" />
+                                </Grid.ColumnDefinitions>
+
+                                <ContentPresenter Grid.Column="0" x:Name="ContentPresenter" FontFamily="Segoe UI Symbol" FontSize="22" 
+                                              VerticalAlignment="Center" HorizontalAlignment="Center" />
+
+                                <TextBlock Grid.Column="1" Margin="5,0,0,0" Text="{TemplateBinding AutomationProperties.Name}" Style="{StaticResource BaselineTextStyle}"
+                                                   FontWeight="Light" FontSize="26.667" VerticalAlignment="Center" />
+
+                                <TextBlock Grid.Column="2" Text="&#xE0E3;" FontFamily="Segoe UI Symbol" Foreground="LightGray" FontSize="28" VerticalAlignment="Center" />
+
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup x:Name="CommonStates">
+                                        <VisualState x:Name="Normal" />
+                                        <VisualState x:Name="Pressed"/>
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+                            </Grid>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="MenuOptionStyle"  TargetType="ButtonBase">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Foreground" Value="Black" />
+            <Setter Property="FontFamily" Value="Segoe UI Light" />
+            <Setter Property="HorizontalAlignment" Value="Stretch" />
+            <Setter Property="Margin" Value="0,3,0,3" />
+            <Setter Property="Padding" Value="15,0,5,0" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ButtonBase">
+                        <Border Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" Margin="{TemplateBinding Margin}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="40" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <ContentPresenter Grid.Column="0" x:Name="ContentPresenter" FontFamily="Segoe UI Symbol" FontSize="22" 
+                                              VerticalAlignment="Center" HorizontalAlignment="Center" />
+
+                                <TextBlock Grid.Column="1" Margin="5,0,0,0" Text="{TemplateBinding AutomationProperties.Name}" Style="{StaticResource BaselineTextStyle}"
+                                                   FontWeight="Light" FontSize="26.667" VerticalAlignment="Center" />
+
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup x:Name="CommonStates">
+                                        <VisualState x:Name="Normal" />
+                                        <VisualState x:Name="Pressed"/>
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+                            </Grid>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="SavedSearchBadgeMenuOptionStyle"  TargetType="ButtonBase">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Foreground" Value="Black" />
+            <Setter Property="FontFamily" Value="Segoe UI Light" />
+            <Setter Property="HorizontalAlignment" Value="Stretch" />
+            <Setter Property="Margin" Value="0,5,0,5" />
+            <Setter Property="Padding" Value="15,0,5,0" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ButtonBase">
+                        <Border Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}">
+                            <Grid Margin="{TemplateBinding Margin}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="40" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="30" />
+                                </Grid.ColumnDefinitions>
+
+                                <ContentPresenter Grid.Column="0" x:Name="ContentPresenter" FontFamily="Segoe UI Symbol" FontSize="22" 
+                                              VerticalAlignment="Center" HorizontalAlignment="Center" />
+
+                                <TextBlock Grid.Column="1" Margin="5,0,0,0" Text="{TemplateBinding AutomationProperties.Name}" Style="{StaticResource BaselineTextStyle}"
+                                                   FontWeight="Light" FontSize="26.667" VerticalAlignment="Center" />
+
+                                <TextBlock Grid.Column="2" Margin="5,0,0,0" Text="{Binding SearchNotifications}" Style="{StaticResource BaselineTextStyle}"
+                                                   FontWeight="Normal" FontSize="26.667" VerticalAlignment="Center" Foreground="{StaticResource AppThemePrimary}" />
+                                
+                                <TextBlock Grid.Column="3" Text="&#xE0E3;" FontFamily="Segoe UI Symbol" Foreground="LightGray" FontSize="28" VerticalAlignment="Center" />
+
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup x:Name="CommonStates">
+                                        <VisualState x:Name="Normal" />
+                                        <VisualState x:Name="Pressed"/>
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+                            </Grid>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        
+        <Style x:Key="MenuSpaceStyle" TargetType="Border">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Height" Value="29" />
+        </Style>
+
+        <Style x:Key="SearchMenuOptionStyle" BasedOn="{StaticResource MenuOptionNavigateStyle}" TargetType="ButtonBase">
+            <Setter Property="Content" Value="&#xE1A3;" />
+            <Setter Property="AutomationProperties.Name" Value="Search" />
+        </Style>
+        <Style x:Key="BrowseMenuOptionStyle" BasedOn="{StaticResource MenuOptionNavigateStyle}" TargetType="ButtonBase">
+            <Setter Property="Content" Value="&#xE17D;" />
+            <Setter Property="AutomationProperties.Name" Value="Browse" />
+        </Style>
+        <Style x:Key="FavoritesMenuOptionStyle" BasedOn="{StaticResource MenuOptionNavigateStyle}" TargetType="ButtonBase">
+            <Setter Property="Content" Value="&#xE0A5;" />
+            <Setter Property="AutomationProperties.Name" Value="Favorited Posts" />
+        </Style>
+        <Style x:Key="RecentlyViewedMenuOptionStyle" BasedOn="{StaticResource MenuOptionNavigateStyle}" TargetType="ButtonBase">
+            <Setter Property="Content" Value="&#xE121;" />
+            <Setter Property="AutomationProperties.Name" Value="Recently Viewed Posts" />
+        </Style>
+        <Style x:Key="RecentlySearchedMenuOptionStyle" BasedOn="{StaticResource MenuOptionNavigateStyle}" TargetType="ButtonBase">
+            <Setter Property="Content" Value="&#xE12E;" />
+            <Setter Property="AutomationProperties.Name" Value="Recently Searched" />
+        </Style>
+        <Style x:Key="SavedSearchesMenuOptionStyle" BasedOn="{StaticResource SavedSearchBadgeMenuOptionStyle}" TargetType="ButtonBase">
+            <Setter Property="Content" Value="&#xE105;" />
+            <Setter Property="AutomationProperties.Name" Value="Saved Searches" />
+        </Style>
+        <Style x:Key="CreatePostMenuOptionStyle" BasedOn="{StaticResource MenuOptionNavigateStyle}" TargetType="ButtonBase">
+            <Setter Property="Content" Value="&#xE104;" />
+            <Setter Property="AutomationProperties.Name" Value="Create Post" />
+        </Style>
+        <Style x:Key="UpgradeMenuOptionStyle" BasedOn="{StaticResource MenuOptionNavigateStyle}" TargetType="ButtonBase">
+            <Setter Property="Content" Value="&#xE0B4;" />
+            <Setter Property="AutomationProperties.Name" Value="Upgrade Craigslist 8X" />
+        </Style>
+        <Style x:Key="AccountManagementMenuOptionStyle" BasedOn="{StaticResource MenuOptionNavigateStyle}" TargetType="ButtonBase">
+            <Setter Property="Content" Value="&#xE16F;" />
+            <Setter Property="AutomationProperties.Name" Value="Account Management" />
+        </Style>
+    </UserControl.Resources>
+
+    <Border Style="{StaticResource PanelBorder}">
+        <Grid Background="{StaticResource AppSubPanelBackground}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="75" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Border Background="Transparent">
+                <TextBlock Text="Craigslist 8X" Style="{StaticResource MainPanelHeader}" />
+            </Border>
+
+            <StackPanel Grid.Row="1" Orientation="Vertical" Margin="0,0,0,0">
+                <Button x:Name="SearchMenuButton" Tapped="SearchMenuButton_Tapped" Style="{StaticResource SearchMenuOptionStyle}" />
+                <Button x:Name="BrowseMenuButton" Tapped="BrowseMenuButton_Tapped" Style="{StaticResource BrowseMenuOptionStyle}" />
+                <Button x:Name="SavedSearchesMenuButton" Tapped="SavedSearchesMenuButton_Tapped" Style="{StaticResource SavedSearchesMenuOptionStyle}" />
+                <Button x:Name="RecentlySearchedMenuButton" Tapped="RecentlySearchedMenuButton_Tapped" Style="{StaticResource RecentlySearchedMenuOptionStyle}" />
+                <Button x:Name="FavoritesMenuButton" Tapped="FavoritesMenuButton_Tapped" Style="{StaticResource FavoritesMenuOptionStyle}" />
+                <Button x:Name="RecentlyViewedMenuButton" Tapped="RecentlyViewedMenuButton_Tapped" Style="{StaticResource RecentlyViewedMenuOptionStyle}" />
+                <Button x:Name="CreatePostMenuButton" Tapped="CreatePostMenuButton_Tapped" Style="{StaticResource CreatePostMenuOptionStyle}" />
+                <Button x:Name="AccountManagementMenuButton" Tapped="AccountManagementMenuButton_Tapped" Style="{StaticResource AccountManagementMenuOptionStyle}" />
+                <Button x:Name="UpgradeMenuButton" Tapped="UpgradeMenuButton_Tapped" Style="{StaticResource UpgradeMenuOptionStyle}" Visibility="{Binding ShowAds, Converter={StaticResource BoolToVis}}" />                       
+            </StackPanel>
+
+            <msad:AdControl Grid.Row="2" Visibility="{Binding ShowAds, Converter={StaticResource BoolToVis}}"  x:Name="AdBar" ApplicationId="912a833c-811e-425d-a69c-9c038742868e" AdUnitId="110579" Height="60" Width="292" HorizontalAlignment="Center" />
+            
+            <Grid Grid.Row="3" Margin="15" Tapped="SearchSettings_Tapped" Background="Transparent">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" Text="Search Settings" Style="{StaticResource TitleTextStyle}" Margin="5" />
+                <TextBlock Grid.Row="1" Text="{Binding SearchSettings, Mode=OneWay}" Style="{StaticResource SubtitleTextStyle}" Margin="5" />
+            </Grid>            
+        </Grid>
+    </Border>
+</UserControl>

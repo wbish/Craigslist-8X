@@ -1,0 +1,87 @@
+﻿<UserControl
+    x:Class="WB.Craigslist8X.View.PostDetailsPanel"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WB.Craigslist8X.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:bm="using:Bing.Maps"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+
+    <UserControl.Resources>
+        <Style x:Key="ActionLinkLabelStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="Black" />
+            <Setter Property="Margin" Value="20,20,0,5" />
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="FontFamily" Value="Segoe UI" />
+            <Setter Property="TextAlignment" Value="Left" />
+        </Style>
+
+        <Style x:Key="ActionValueStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="Black" />
+            <Setter Property="Margin" Value="20,20,20,5" />
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="FontFamily" Value="Segoe UI" />
+            <Setter Property="TextTrimming" Value="WordEllipsis" />
+            <Setter Property="TextAlignment" Value="Left" />
+        </Style>
+
+        <Style x:Key="ActionLinkStyle" TargetType="TextBlock" BasedOn="{StaticResource ActionValueStyle}">
+            <Setter Property="Foreground" Value="Blue" />
+        </Style>
+    </UserControl.Resources>
+
+    <Border Style="{StaticResource PanelBorder}">
+        <Grid Background="{StaticResource AppSubPanelBackground}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="75" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Border Background="{StaticResource AppHeaderBackground}">
+                <TextBlock Text="Contact Information" Style="{StaticResource SubPanelHeader}" />
+            </Border>
+
+            <StackPanel Grid.Row="1" Orientation="Vertical" Margin="0,0,0,0">
+                <bm:Map x:Name="PostMap" Credentials="Al8PeMQARMlRy4ks02r-xP3EOfrHj5xmExwdIzIhQezYnseuvXlXGN-t9Sy-OZHr"
+                        ZoomLevel="8" Margin="20" Height="300">
+                </bm:Map>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock x:Name="DateLabel" Text="Date" Style="{StaticResource ActionLinkLabelStyle}" />
+                    <TextBlock x:Name="Date" Grid.Column="1" Text="{Binding Timestamp}" Style="{StaticResource ActionValueStyle}" />
+
+                    <TextBlock x:Name="PriceLabel" Grid.Row="1" Text="Price" Style="{StaticResource ActionLinkLabelStyle}" />
+                    <TextBlock x:Name="Price" Grid.Row="1" Grid.Column="1" Text="{Binding Price}" Style="{StaticResource ActionValueStyle}" />
+
+                    <TextBlock x:Name="LocationLabel" Grid.Row="2" Text="Location" Style="{StaticResource ActionLinkLabelStyle}" />
+                    <TextBlock x:Name="Location" Grid.Row="2" Grid.Column="1" Text="{Binding Location}" Style="{StaticResource ActionValueStyle}" />
+                    
+                    <TextBlock x:Name="UrlLabel" Grid.Row="3"  Text="Link" Style="{StaticResource ActionLinkLabelStyle}" />
+                    <TextBlock x:Name="Url" Grid.Row="3" Grid.Column="1" Text="{Binding Url}" Style="{StaticResource ActionLinkStyle}" Tapped="UrlLink_Tapped" />
+
+                    <TextBlock x:Name="EmailLabel" Grid.Row="4" Text="Email" Style="{StaticResource ActionLinkLabelStyle}" />
+                    <TextBlock x:Name="EmailLink" Grid.Row="4" Grid.Column="1" Text="{Binding Email}" Style="{StaticResource ActionLinkStyle}" Tapped="EmailLink_Tapped" />
+
+                    <TextBlock x:Name="PhoneLabel" Grid.Row="5" Text="Phone" Style="{StaticResource ActionLinkLabelStyle}" />
+                    <TextBlock x:Name="PhoneLink" Grid.Row="5" Grid.Column="1" Text="{Binding Phone}" Style="{StaticResource ActionLinkStyle}" Tapped="PhoneLink_Tapped" />
+                </Grid>                
+            </StackPanel>
+        </Grid>
+    </Border>
+</UserControl>

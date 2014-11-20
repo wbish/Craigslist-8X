@@ -1,0 +1,139 @@
+for sale,all for sale,sss
+for sale,appliances,ppa
+for sale,antiques,atq
+for sale,barter,bar
+for sale,bikes,bik
+for sale,boats,boo
+for sale,books,bks
+for sale,business,bfs
+for sale,computer,sya
+for sale,free,zip
+for sale,furniture,fua
+for sale,general,for
+for sale,jewelry,jwl
+for sale,materials,mat
+for sale,rvs,rva
+for sale,sporting,spo
+for sale,tickets,tia
+for sale,tools,tls
+for sale,wanted,wan
+for sale,arts+crafts,art
+for sale,auto parts,pta
+for sale,baby+kids,bab
+for sale,beauty+hlth,hab
+for sale,cars+trucks - all,cta
+for sale,cars+trucks - by dealer,ctd
+for sale,cars+trucks - by owner,cto
+for sale,cds/dvd/vhs,emd
+for sale,cell phones,moa
+for sale,clothes+acc,clo
+for sale,collectibles,clt
+for sale,electronics,ela
+for sale,farm+garden,grd
+for sale,garage sale,gms
+for sale,household,hsh
+for sale,motorcycles,mca
+for sale,music instr,msg
+for sale,photo+video,pho
+for sale,toys+games,tag
+for sale,video gaming,vgm
+housing,all housing,hhh
+housing,apts / housing,apa
+housing,rooms / shared,roo
+housing,sublets / temporary,sub
+housing,housing wanted,hsw
+housing,housing swap,swp
+housing,vacation rentals,vac
+housing,parking / storage,prk
+housing,office / commercial,off
+housing,real estate - all,rea
+housing,real estate - by owner,reo
+housing,real estate - by broker,reb
+community,all community,ccc
+community,activities,act
+community,artists,ats
+community,childcare,kid
+community,general,com
+community,groups,grp
+community,pets,pet
+community,events,cal
+community,lost+found,laf
+community,musicians,muc
+community,local news,vnn
+community,politics,pol
+community,rideshare,rid
+community,volunteers,vol
+community,classes,cal/#classes
+jobs,all jobs,jjj
+jobs,accounting+finance,acc
+jobs,admin / office,ofc
+jobs,arch / engineering,egr
+jobs,art / media / design,med
+jobs,biotech / science,sci
+jobs,business / mgmt,bus
+jobs,customer service,csr
+jobs,education,edu
+jobs,food / bev / hosp,fbh
+jobs,general labor,lab
+jobs,government,gov
+jobs,human resources,hum
+jobs,internet engineers,eng
+jobs,legal  /  paralegal,lgl
+jobs,manufacturing,mnu
+jobs,marketing / pr / ad,mar
+jobs,medical / health,hea
+jobs,nonprofit sector,npo
+jobs,real estate,rej
+jobs,retail / wholesale,ret
+jobs,sales / biz dev,sls
+jobs,salon / spa / fitness,spa
+jobs,security,sec
+jobs,skilled trade / craft,trd
+jobs,software / qa / dba,sof
+jobs,systems / network,sad
+jobs,technical support,tch
+jobs,transport,trp
+jobs,tv / film / video,tfr
+jobs,web / info design,web
+jobs,writing / editing,wri
+jobs,[ETC],etc
+gigs,all gigs,ggg
+gigs,crew,cwg
+gigs,event,evg
+gigs,labor,lbg
+gigs,talent,tlg
+gigs,computer,cpg
+gigs,creative,crg
+gigs,domestic,dmg
+gigs,writing,wrg
+services,all services,bbb
+services,beauty,bts
+services,creative,crs
+services,computer,cps
+services,cycle,cys
+services,event,evs
+services,financial,fns
+services,legal,lgs
+services,lessons,lss
+services,marine,mas
+services,pet,pas
+services,automotive,aos
+services,farm+garden,fgs
+services,household,hss
+services,labor/move,lbs
+services,skill'd trade,sks
+services,real estate,rts
+services,sm biz ads,biz
+services,therapeutic,thp
+services,travel/vac,trv
+services,write/ed/tr8,wet
+resumes,all resumes,res
+personals,strictly platonic,stp
+personals,women seek women,w4w
+personals,women seeking men,w4m
+personals,men seeking women,m4w
+personals,men seeking men,m4m
+personals,misc romance,msr
+personals,casual encounters,cas
+personals,missed connections,mis
+personals,rants and raves,rnr

@@ -1,0 +1,45 @@
+﻿<UserControl
+    x:Class="WB.Craigslist8X.View.FiltersContainer"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WB.Craigslist8X.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006">
+
+    <Grid Margin="10,0,10,10" Tapped="FilterContainer_Tapped">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+
+        <Button x:Name="DummyButton" Margin="0" Padding="0" Width="0" Height="0" />
+        <TextBlock Grid.ColumnSpan="2" Text="Filters" Style="{StaticResource SettingsHeaderStyle}" />
+
+        <ScrollViewer Grid.Row="1" Grid.Column="0" MaxHeight="500"  
+                      VerticalScrollBarVisibility="Auto" HorizontalScrollMode="Disabled">
+            <StackPanel x:Name="SearchPanel" Orientation="Vertical">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="Search" Style="{StaticResource SettingsTextStyle}" />
+                    <TextBox Grid.Row="1" Text="{Binding SearchQuery, Mode=TwoWay}" Width="200" Tapped="FilterContainer_Tapped"
+                             KeyDown="SearchBox_KeyDown"/>
+                </Grid>
+                <ToggleSwitch Header="Search Titles Only" IsOn="{Binding TitlesOnly, Mode=TwoWay}" />
+                <ToggleSwitch Header="Has Pictures" IsOn="{Binding HasPictures, Mode=TwoWay}" />
+            </StackPanel>
+        </ScrollViewer>
+
+        <ScrollViewer Grid.Row="1" Grid.Column="1" MaxHeight="500" Margin="20,0,0,0" Visibility="{Binding HasFilters, Converter={StaticResource BoolToVis}}"
+                      VerticalScrollBarVisibility="Auto" HorizontalScrollMode="Disabled">
+            <StackPanel x:Name="FilterPanel"  Orientation="Vertical" >
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

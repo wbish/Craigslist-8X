@@ -1,0 +1,19 @@
+﻿<UserControl
+    x:Class="WB.Craigslist8X.View.GeneralSettings"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WB.Craigslist8X.View.Settings"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+
+    <StackPanel Orientation="Vertical">
+        <TextBlock Style="{StaticResource SettingsHeaderStyle}" Text="Tracking" />
+        <ToggleSwitch x:Name="TrackRecentlyViewedToggle" Header="Track recently viewed posts" Margin="0,0,0,15" Width="300" 
+            IsOn="{Binding TrackRecentlyViewed, Mode=TwoWay}" />
+        <ToggleSwitch x:Name="TrackRecentlySearchedToggle" Header="Track recently searched" Margin="0,0,0,15" Width="300" 
+            IsOn="{Binding TrackRecentlySearched, Mode=TwoWay}" />
+    </StackPanel>
+</UserControl>

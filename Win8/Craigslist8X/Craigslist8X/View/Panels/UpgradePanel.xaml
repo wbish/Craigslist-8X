@@ -1,0 +1,55 @@
+﻿<UserControl
+    x:Class="WB.Craigslist8X.View.UpgradePanel"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WB.Craigslist8X.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+
+    <Border Style="{StaticResource PanelBorder}">
+        <Grid Background="{StaticResource AppSubPanelBackground}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="75" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Grid Background="{StaticResource AppHeaderBackground}">
+                <Border>
+                    <TextBlock Text="Upgrade to Craigslist 8X PRO" Style="{StaticResource SubPanelHeader}" />
+                </Border>
+            </Grid>
+
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <TextBlock Style="{StaticResource TitleTextStyle}" Foreground="{StaticResource AppThemeSecondary}" Margin="20,20,20,0" Text="Thank you for your interest in upgrading Craigslist 8X!" />
+
+                <TextBlock Grid.Row="1" Style="{StaticResource BaselineTextStyle}" Margin="20,20,20,0" Text="When I began writing Craigslist 8X I set out to create a full Windows 8 Craigslist app that everyone can use for free. For the past several months, I've worked pretty hard to ship Craigslist 8X to the public and make the app a reality. In doing so, I've incurred some costs that I've chosen to attempt to recoup by adding ads." />
+
+                <TextBlock Grid.Row="2" Style="{StaticResource BaselineTextStyle}" Margin="20" Text="I understand some people (including myself) really dislike ads so I want to provide people a way of getting rid of them for good. To do that, I'm offering the following PRO upgrade package that includes the following:" />
+
+                <TextBlock Grid.Row="3" Style="{StaticResource BaselineTextStyle}" FontWeight="SemiBold" Margin="20" Text="What you get with Craigslist 8X PRO Package" />
+                
+                <TextBlock Grid.Row="4" Style="{StaticResource BaselineTextStyle}" Margin="20,0,0,0" Text="   &#x00B7; No more ads!" />
+                <TextBlock Grid.Row="5" Style="{StaticResource BaselineTextStyle}" Margin="20,0,0,0" Text="   &#x00B7; Unlimited in-app posting" />
+                <TextBlock Grid.Row="6" Style="{StaticResource BaselineTextStyle}" Margin="20,0,0,0" Text="   &#x00B7; Future PRO-only features coming soon!" />
+                <TextBlock Grid.Row="7" Style="{StaticResource BaselineTextStyle}" Margin="20,0,0,0" Text="   &#x00B7; My eternal gratitude :)" />
+                
+                <Button Grid.Row="8" x:Name="UpgradePro" Margin="20" Content="Upgrade to PRO for $1.99" Tapped="UpgradePro_Tapped" Foreground="{StaticResource AppThemePrimary}" />
+            </Grid>
+        </Grid>
+    </Border>
+</UserControl>

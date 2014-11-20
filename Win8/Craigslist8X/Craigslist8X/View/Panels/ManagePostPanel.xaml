@@ -1,0 +1,38 @@
+﻿<UserControl
+    x:Class="WB.Craigslist8X.View.ManagePostPanel"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WB.Craigslist8X.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006">
+
+    <Border Style="{StaticResource PanelBorder}">
+        <Grid Background="{StaticResource AppSubPanelBackground}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="75" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0" Background="{StaticResource AppHeaderBackground}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Column="0" x:Name="TitleHeader" Text="Loading..." Style="{StaticResource SubPanelHeader}" />
+                <Button Grid.Column="1" x:Name="RepostButton" Content="&#xE1A8;" Style="{StaticResource IconButtonStyle}" Tapped="RepostPosting_Tapped" Visibility="Collapsed" />
+                <Button Grid.Column="2" x:Name="EditButton" Content="&#xE104;" Style="{StaticResource IconButtonStyle}" Tapped="EditPosting_Tapped" Visibility="Collapsed" />
+                <Button Grid.Column="3" x:Name="DeleteButton" Content="&#xE107;" Style="{StaticResource IconButtonStyle}" Tapped="DeletePosting_Tapped" Visibility="Collapsed"/>
+                <Button Grid.Column="4" x:Name="UndeleteButton" Content="&#x267B;" Style="{StaticResource IconButtonStyle}" Tapped="UndeletePosting_Tapped" Visibility="Collapsed"/>
+            </Grid>
+
+            <ProgressBar x:Name="ProgressBar" Grid.Row="1" IsIndeterminate="True" VerticalAlignment="Top" />
+
+            <WebView x:Name="PostingWebView" Grid.Row="2" />
+        </Grid>
+    </Border>
+</UserControl>

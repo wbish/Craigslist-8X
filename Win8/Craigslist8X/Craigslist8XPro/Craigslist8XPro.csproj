@@ -1,0 +1,703 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <ProjectGuid>{7C65DDA8-D2DF-41D1-8CA4-D1363D08C9D4}</ProjectGuid>
+    <OutputType>AppContainerExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WB.Craigslist8X</RootNamespace>
+    <AssemblyName>Craigslist8XPro</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{BC8A1FFA-BEE3-4634-8014-F334798102B3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <PackageCertificateKeyFile>Craigslist8XPro_StoreKey.pfx</PackageCertificateKeyFile>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <PackageCertificateThumbprint>A1C5085BDB46521B144682B5A11EBFBD02357F9E</PackageCertificateThumbprint>
+    <AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\ARM\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;NETFX_CORE;CRAIGSLIST8XPRO</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
+    <OutputPath>bin\ARM\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;CRAIGSLIST8XPRO</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;NETFX_CORE;CRAIGSLIST8XPRO</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;CRAIGSLIST8XPRO</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;NETFX_CORE;CRAIGSLIST8XPRO</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;CRAIGSLIST8XPRO</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <ApplicationDefinition Include="..\Craigslist8X\App.xaml">
+      <Link>App.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="..\Craigslist8X\Common\StandardStyles.xaml">
+      <Link>Common\StandardStyles.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Craigslist8X\View\ChooseCitiesPage.xaml">
+      <Link>View\ChooseCitiesPage.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Craigslist8X\View\Controls\PostMapControl.xaml">
+      <Link>View\Controls\PostMapControl.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Craigslist8X\View\Flyouts\ContinentPicker.xaml">
+      <Link>View\Flyouts\ContinentPicker.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Craigslist8X\View\Flyouts\ExpandTip.xaml">
+      <Link>View\Flyouts\ExpandTip.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Craigslist8X\View\Flyouts\Filters\BooleanFilter.xaml">
+      <Link>View\Flyouts\Filters\BooleanFilter.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Craigslist8X\View\Flyouts\Filters\ChooseOneFilter.xaml">
+      <Link>View\Flyouts\Filters\ChooseOneFilter.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Craigslist8X\View\Flyouts\Filters\FiltersContainer.xaml">
+      <Link>View\Flyouts\Filters\FiltersContainer.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Craigslist8X\View\Flyouts\Filters\NumericFilter.xaml">
+      <Link>View\Flyouts\Filters\NumericFilter.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Craigslist8X\View\Flyouts\NewsContainer.xaml">
+      <Link>View\Flyouts\NewsContainer.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Craigslist8X\View\Flyouts\SaveSearch.xaml">
+      <Link>View\Flyouts\SaveSearch.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Craigslist8X\View\MainPage.xaml">
+      <Link>View\MainPage.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Craigslist8X\View\Panels\AccountManagementPanel.xaml">
+      <Link>View\Panels\AccountManagementPanel.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Craigslist8X\View\Panels\ChooseAccountPanel.xaml">
+      <Link>View\Panels\ChooseAccountPanel.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Craigslist8X\View\Panels\ChoosePostCityPanel.xaml">
+      <Link>View\Panels\ChoosePostCityPanel.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Craigslist8X\View\Panels\CreatePostPanel.xaml">
+      <Link>View\Panels\CreatePostPanel.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Craigslist8X\View\Panels\ExploreCategoriesPanel.xaml">
+      <Link>View\Panels\ExploreCategoriesPanel.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Craigslist8X\View\Panels\FavoritedPostsPanel.xaml">
+      <Link>View\Panels\FavoritedPostsPanel.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Craigslist8X\View\Panels\MainMenuOptionsPanel.xaml">
+      <Link>View\Panels\MainMenuOptionsPanel.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Craigslist8X\View\Panels\PostDetailsPanel.xaml">
+      <Link>View\Panels\PostDetailsPanel.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Craigslist8X\View\Panels\RecentlySearchedPanel.xaml">
+      <Link>View\Panels\RecentlySearchedPanel.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Craigslist8X\View\Panels\RecentlyViewedPanel.xaml">
+      <Link>View\Panels\RecentlyViewedPanel.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Craigslist8X\View\Panels\SavedSearchesPanel.xaml">
+      <Link>View\Panels\SavedSearchesPanel.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Craigslist8X\View\Panels\SearchResultsPanel.xaml">
+      <Link>View\Panels\SearchResultsPanel.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Craigslist8X\View\Panels\UpgradePanel.xaml">
+      <Link>View\Panels\UpgradePanel.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Craigslist8X\View\Panels\ViewPostPanel.xaml">
+      <Link>View\Panels\ViewPostPanel.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Craigslist8X\View\Settings\AboutSettings.xaml">
+      <Link>View\Settings\AboutSettings.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Craigslist8X\View\Settings\GeneralSettings.xaml">
+      <Link>View\Settings\GeneralSettings.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Craigslist8X\View\Settings\SearchSettings.xaml">
+      <Link>View\Settings\SearchSettings.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\Craigslist8X\View\Panels\ManagePostPanel.xaml">
+      <Link>View\Panels\ManagePostPanel.xaml</Link>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Craigslist8X\App.xaml.cs">
+      <Link>App.xaml.cs</Link>
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Craigslist8X\Common\BindableBase.cs">
+      <Link>Common\BindableBase.cs</Link>
+    </Compile>
+    <Compile Include="..\Craigslist8X\Common\BooleanNegationConverter.cs">
+      <Link>Common\BooleanNegationConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\Craigslist8X\Common\BooleanToVisibilityConverter.cs">
+      <Link>Common\BooleanToVisibilityConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\Craigslist8X\Common\Extensions.cs">
+      <Link>Common\Extensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Craigslist8X\Common\LayoutAwarePage.cs">
+      <Link>Common\LayoutAwarePage.cs</Link>
+    </Compile>
+    <Compile Include="..\Craigslist8X\Common\Utilities.cs">
+      <Link>Common\Utilities.cs</Link>
+    </Compile>
+    <Compile Include="..\Craigslist8X\Model\BackgroundTaskManager.cs">
+      <Link>Model\BackgroundTaskManager.cs</Link>
+    </Compile>
+    <Compile Include="..\Craigslist8X\Model\CategoryManager.cs">
+      <Link>Model\CategoryManager.cs</Link>
+    </Compile>
+    <Compile Include="..\Craigslist8X\Model\CityManager.cs">
+      <Link>Model\CityManager.cs</Link>
+    </Compile>
+    <Compile Include="..\Craigslist8X\Model\Craigslist8XData.cs">
+      <Link>Model\Craigslist8XData.cs</Link>
+    </Compile>
+    <Compile Include="..\Craigslist8X\Model\FavoritePosts.cs">
+      <Link>Model\FavoritePosts.cs</Link>
+    </Compile>
+    <Compile Include="..\Craigslist8X\Model\IStorageBacked.cs">
+      <Link>Model\IStorageBacked.cs</Link>
+    </Compile>
+    <Compile Include="..\Craigslist8X\Model\NewsManager.cs">
+      <Link>Model\NewsManager.cs</Link>
+    </Compile>
+    <Compile Include="..\Craigslist8X\Model\RecentlySearched.cs">
+      <Link>Model\RecentlySearched.cs</Link>
+    </Compile>
+    <Compile Include="..\Craigslist8X\Model\RecentlyViewed.cs">
+      <Link>Model\RecentlyViewed.cs</Link>
+    </Compile>
+    <Compile Include="..\Craigslist8X\Model\SavedQuery.cs">
+      <Link>Model\SavedQuery.cs</Link>
+    </Compile>
+    <Compile Include="..\Craigslist8X\Model\SavedSearches.cs">
+      <Link>Model\SavedSearches.cs</Link>
+    </Compile>
+    <Compile Include="..\Craigslist8X\Model\Settings.cs">
+      <Link>Model\Settings.cs</Link>
+    </Compile>
+    <Compile Include="..\Craigslist8X\Model\UserAccounts.cs">
+      <Link>Model\UserAccounts.cs</Link>
+    </Compile>
+    <Compile Include="..\Craigslist8X\ViewModel\AccountManagementVM.cs">
+      <Link>ViewModel\AccountManagementVM.cs</Link>
+    </Compile>
+    <Compile Include="..\Craigslist8X\ViewModel\AccountVM.cs">
+      <Link>ViewModel\AccountVM.cs</Link>
+    </Compile>
+    <Compile Include="..\Craigslist8X\ViewModel\ChooseCitiesVM.cs">
+      <Link>ViewModel\ChooseCitiesVM.cs</Link>
+    </Compile>
+    <Compile Include="..\Craigslist8X\ViewModel\Common\Converters.cs">
+      <Link>ViewModel\Common\Converters.cs</Link>
+    </Compile>
+    <Compile Include="..\Craigslist8X\ViewModel\Common\PostBase.cs">
+      <Link>ViewModel\Common\PostBase.cs</Link>
+    </Compile>
+    <Compile Include="..\Craigslist8X\ViewModel\Common\PostDataTemplateSelector.cs">
+      <Link>ViewModel\Common\PostDataTemplateSelector.cs</Link>
+    </Compile>
+    <Compile Include="..\Craigslist8X\ViewModel\Common\PostGridItemStyleSelector.cs">
+      <Link>ViewModel\Common\PostGridItemStyleSelector.cs</Link>
+    </Compile>
+    <Compile Include="..\Craigslist8X\ViewModel\Common\Utility.cs">
+      <Link>ViewModel\Common\Utility.cs</Link>
+    </Compile>
+    <Compile Include="..\Craigslist8X\ViewModel\CreatePostVM.cs">
+      <Link>ViewModel\CreatePostVM.cs</Link>
+    </Compile>
+    <Compile Include="..\Craigslist8X\ViewModel\ExploreCategoriesVM.cs">
+      <Link>ViewModel\ExploreCategoriesVM.cs</Link>
+    </Compile>
+    <Compile Include="..\Craigslist8X\ViewModel\FavoritePostsVM.cs">
+      <Link>ViewModel\FavoritePostsVM.cs</Link>
+    </Compile>
+    <Compile Include="..\Craigslist8X\ViewModel\GeneralSettingsVM.cs">
+      <Link>ViewModel\GeneralSettingsVM.cs</Link>
+    </Compile>
+    <Compile Include="..\Craigslist8X\ViewModel\LoadMorePostsVM.cs">
+      <Link>ViewModel\LoadMorePostsVM.cs</Link>
+    </Compile>
+    <Compile Include="..\Craigslist8X\ViewModel\MainOptionsVM.cs">
+      <Link>ViewModel\MainOptionsVM.cs</Link>
+    </Compile>
+    <Compile Include="..\Craigslist8X\ViewModel\PostAd.cs">
+      <Link>ViewModel\PostAd.cs</Link>
+    </Compile>
+    <Compile Include="..\Craigslist8X\ViewModel\PostVM.cs">
+      <Link>ViewModel\PostVM.cs</Link>
+    </Compile>
+    <Compile Include="..\Craigslist8X\ViewModel\QueryResultVM.cs">
+      <Link>ViewModel\QueryResultVM.cs</Link>
+    </Compile>
+    <Compile Include="..\Craigslist8X\ViewModel\RecentlySearchedVM.cs">
+      <Link>ViewModel\RecentlySearchedVM.cs</Link>
+    </Compile>
+    <Compile Include="..\Craigslist8X\ViewModel\RecentlyViewedVM.cs">
+      <Link>ViewModel\RecentlyViewedVM.cs</Link>
+    </Compile>
+    <Compile Include="..\Craigslist8X\ViewModel\RecentQueryVM.cs">
+      <Link>ViewModel\RecentQueryVM.cs</Link>
+    </Compile>
+    <Compile Include="..\Craigslist8X\ViewModel\SavedSearchVM.cs">
+      <Link>ViewModel\SavedSearchVM.cs</Link>
+    </Compile>
+    <Compile Include="..\Craigslist8X\ViewModel\SearchResultsVM.cs">
+      <Link>ViewModel\SearchResultsVM.cs</Link>
+    </Compile>
+    <Compile Include="..\Craigslist8X\ViewModel\SearchSettingsVM.cs">
+      <Link>ViewModel\SearchSettingsVM.cs</Link>
+    </Compile>
+    <Compile Include="..\Craigslist8X\View\ChooseCitiesPage.xaml.cs">
+      <Link>View\ChooseCitiesPage.xaml.cs</Link>
+      <DependentUpon>ChooseCitiesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Craigslist8X\View\Controls\PostMapControl.xaml.cs">
+      <Link>View\Controls\PostMapControl.xaml.cs</Link>
+      <DependentUpon>PostMapControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Craigslist8X\View\Flyouts\ContinentPicker.xaml.cs">
+      <Link>View\Flyouts\ContinentPicker.xaml.cs</Link>
+      <DependentUpon>ContinentPicker.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Craigslist8X\View\Flyouts\ExpandTip.xaml.cs">
+      <Link>View\Flyouts\ExpandTip.xaml.cs</Link>
+      <DependentUpon>ExpandTip.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Craigslist8X\View\Flyouts\Filters\BooleanFilter.xaml.cs">
+      <Link>View\Flyouts\Filters\BooleanFilter.xaml.cs</Link>
+      <DependentUpon>BooleanFilter.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Craigslist8X\View\Flyouts\Filters\ChooseOneFilter.xaml.cs">
+      <Link>View\Flyouts\Filters\ChooseOneFilter.xaml.cs</Link>
+      <DependentUpon>ChooseOneFilter.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Craigslist8X\View\Flyouts\Filters\FiltersContainer.xaml.cs">
+      <Link>View\Flyouts\Filters\FiltersContainer.xaml.cs</Link>
+      <DependentUpon>FiltersContainer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Craigslist8X\View\Flyouts\Filters\NumericFilter.xaml.cs">
+      <Link>View\Flyouts\Filters\NumericFilter.xaml.cs</Link>
+      <DependentUpon>NumericFilter.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Craigslist8X\View\Flyouts\NewsContainer.xaml.cs">
+      <Link>View\Flyouts\NewsContainer.xaml.cs</Link>
+      <DependentUpon>NewsContainer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Craigslist8X\View\Flyouts\SaveSearch.xaml.cs">
+      <Link>View\Flyouts\SaveSearch.xaml.cs</Link>
+      <DependentUpon>SaveSearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Craigslist8X\View\Interfaces\IPanel.cs">
+      <Link>View\Interfaces\IPanel.cs</Link>
+    </Compile>
+    <Compile Include="..\Craigslist8X\View\Interfaces\IPostList.cs">
+      <Link>View\Interfaces\IPostList.cs</Link>
+    </Compile>
+    <Compile Include="..\Craigslist8X\View\Interfaces\IWebViewHost.cs">
+      <Link>View\Interfaces\IWebViewHost.cs</Link>
+    </Compile>
+    <Compile Include="..\Craigslist8X\View\MainPage.xaml.cs">
+      <Link>View\MainPage.xaml.cs</Link>
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Craigslist8X\View\Panels\AccountManagementPanel.xaml.cs">
+      <Link>View\Panels\AccountManagementPanel.xaml.cs</Link>
+      <DependentUpon>AccountManagementPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Craigslist8X\View\Panels\ChooseAccountPanel.xaml.cs">
+      <Link>View\Panels\ChooseAccountPanel.xaml.cs</Link>
+      <DependentUpon>ChooseAccountPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Craigslist8X\View\Panels\ChoosePostCityPanel.xaml.cs">
+      <Link>View\Panels\ChoosePostCityPanel.xaml.cs</Link>
+      <DependentUpon>ChoosePostCityPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Craigslist8X\View\Panels\CreatePostPanel.xaml.cs">
+      <Link>View\Panels\CreatePostPanel.xaml.cs</Link>
+      <DependentUpon>CreatePostPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Craigslist8X\View\Panels\ExploreCategoriesPanel.xaml.cs">
+      <Link>View\Panels\ExploreCategoriesPanel.xaml.cs</Link>
+      <DependentUpon>ExploreCategoriesPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Craigslist8X\View\Panels\FavoritedPostsPanel.xaml.cs">
+      <Link>View\Panels\FavoritedPostsPanel.xaml.cs</Link>
+      <DependentUpon>FavoritedPostsPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Craigslist8X\View\Panels\MainMenuOptionsPanel.xaml.cs">
+      <Link>View\Panels\MainMenuOptionsPanel.xaml.cs</Link>
+      <DependentUpon>MainMenuOptionsPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Craigslist8X\View\Panels\PostDetailsPanel.xaml.cs">
+      <Link>View\Panels\PostDetailsPanel.xaml.cs</Link>
+      <DependentUpon>PostDetailsPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Craigslist8X\View\Panels\RecentlySearchedPanel.xaml.cs">
+      <Link>View\Panels\RecentlySearchedPanel.xaml.cs</Link>
+      <DependentUpon>RecentlySearchedPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Craigslist8X\View\Panels\RecentlyViewedPanel.xaml.cs">
+      <Link>View\Panels\RecentlyViewedPanel.xaml.cs</Link>
+      <DependentUpon>RecentlyViewedPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Craigslist8X\View\Panels\SavedSearchesPanel.xaml.cs">
+      <Link>View\Panels\SavedSearchesPanel.xaml.cs</Link>
+      <DependentUpon>SavedSearchesPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Craigslist8X\View\Panels\SearchResultsPanel.xaml.cs">
+      <Link>View\Panels\SearchResultsPanel.xaml.cs</Link>
+      <DependentUpon>SearchResultsPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Craigslist8X\View\Panels\UpgradePanel.xaml.cs">
+      <Link>View\Panels\UpgradePanel.xaml.cs</Link>
+      <DependentUpon>UpgradePanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Craigslist8X\View\Panels\ViewPostPanel.xaml.cs">
+      <Link>View\Panels\ViewPostPanel.xaml.cs</Link>
+      <DependentUpon>ViewPostPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Craigslist8X\View\Settings\AboutSettings.xaml.cs">
+      <Link>View\Settings\AboutSettings.xaml.cs</Link>
+      <DependentUpon>AboutSettings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Craigslist8X\View\Settings\GeneralSettings.xaml.cs">
+      <Link>View\Settings\GeneralSettings.xaml.cs</Link>
+      <DependentUpon>GeneralSettings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Craigslist8X\View\Settings\SearchSettings.xaml.cs">
+      <Link>View\Settings\SearchSettings.xaml.cs</Link>
+      <DependentUpon>SearchSettings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Craigslist8X\View\Settings\SettingsUI.cs">
+      <Link>View\Settings\SettingsUI.cs</Link>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\GeocodeService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\RouteService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="..\Craigslist8X\View\Panels\ManagePostPanel.xaml.cs">
+      <Link>View\Panels\ManagePostPanel.xaml.cs</Link>
+      <DependentUpon>ManagePostPanel.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxManifest Include="Package.appxmanifest">
+      <SubType>Designer</SubType>
+    </AppxManifest>
+    <Content Include="..\Craigslist8X\Resources\AddImage.png">
+      <Link>Resources\AddImage.png</Link>
+    </Content>
+    <Content Include="..\Craigslist8X\Resources\BadgeIcon.scale-180.png">
+      <Link>Resources\BadgeIcon.scale-180.png</Link>
+    </Content>
+    <Content Include="..\Craigslist8X\Resources\CraigslistCategories.csv">
+      <Link>Resources\CraigslistCategories.csv</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Craigslist8X\Resources\CraigslistCities.csv">
+      <Link>Resources\CraigslistCities.csv</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Craigslist8XPro_StoreKey.pfx" />
+    <None Include="Craigslist8XPro_TemporaryKey.pfx" />
+    <None Include="packages.config" />
+    <None Include="Properties\ServiceReferences.Designer.ClientConfig" />
+    <None Include="Service References\GeocodeService\Arrays.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\GeocodeService\common.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\GeocodeService\contracts.wsdl" />
+    <None Include="Service References\GeocodeService\contracts.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\GeocodeService\geocode.wsdl" />
+    <None Include="Service References\GeocodeService\geocode.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\GeocodeService\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\GeocodeService\WB.Craigslist8X.GeocodeService.GeocodeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RouteService\common.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\RouteService\contracts.wsdl" />
+    <None Include="Service References\RouteService\contracts.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\RouteService\route.wsdl" />
+    <None Include="Service References\RouteService\route.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\RouteService\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\RouteService\WB.Craigslist8X.RouteService.MajorRoutesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RouteService\WB.Craigslist8X.RouteService.RouteResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Reference Include="Callisto">
+      <HintPath>..\packages\Callisto.1.2.6\lib\winrt45\Callisto.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlAgilityPack">
+      <HintPath>..\packages\HtmlAgilityPack.1.4.6\lib\winrt45\HtmlAgilityPack.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.1\lib\netcore45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="WinRTXamlToolkit, Version=1.3.5.3, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\winrtxamltoolkit.1.3.5.3\lib\netcore45\WinRTXamlToolkit.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\WB\WB.SDK\WB.SDK.csproj">
+      <Project>{3c43c538-2c2b-4ef8-9c4f-81f0ac33ebea}</Project>
+      <Name>WB.SDK</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Craigslist8XTasks\Craigslist8XTasks.csproj">
+      <Project>{ed20ccb3-8a80-4c30-a91c-0fcac0b70f36}</Project>
+      <Name>Craigslist8XTasks</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CraigslistApi\CraigslistApi.csproj">
+      <Project>{03a0b23f-6ba1-45dc-886c-3d62d6fe8224}</Project>
+      <Name>CraigslistApi</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <SDKReference Include="Bing.Maps.Xaml, Version=1.113.0601.2">
+      <Name>Bing Maps for C#, C++, or Visual Basic %28Bing.Maps.Xaml, Version=1.113.0601.2%29</Name>
+    </SDKReference>
+    <SDKReference Include="LiveSDKXAML, Version=5.5">
+      <Name>Live SDK</Name>
+    </SDKReference>
+    <SDKReference Include="Microsoft.VCLibs, version=11.0">
+      <Name>Microsoft Visual C++ Runtime Package</Name>
+    </SDKReference>
+    <SDKReference Include="MSAdvertisingXaml, Version=6.1">
+      <Name>Microsoft Advertising SDK for Windows 8 %28Xaml%29</Name>
+    </SDKReference>
+    <SDKReference Include="Syncfusion controls for WinRT XAML, Version=11.3.0.30">
+      <Name>Syncfusion Controls for WinRT XAML %28Syncfusion controls for WinRT XAML, Version=11.3.0.30%29</Name>
+    </SDKReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\GeocodeService\" />
+    <WCFMetadataStorage Include="Service References\RouteService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\GeocodeService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\GeocodeService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\GeocodeService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\RouteService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\RouteService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\RouteService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\Craigslist8X\Resources\Logo.png">
+      <Link>Resources\Logo.png</Link>
+    </Content>
+    <Content Include="..\Craigslist8X\Resources\OneNoteGray.png">
+      <Link>Resources\OneNoteGray.png</Link>
+    </Content>
+    <Content Include="..\Craigslist8X\Resources\OneNotePurple.png">
+      <Link>Resources\OneNotePurple.png</Link>
+    </Content>
+    <Content Include="..\Craigslist8X\Resources\SmallLogo.png">
+      <Link>Resources\SmallLogo.png</Link>
+    </Content>
+    <Content Include="..\Craigslist8X\Resources\SplashScreen.png">
+      <Link>Resources\SplashScreen.png</Link>
+    </Content>
+    <Content Include="..\Craigslist8X\Resources\StoreLogo.png">
+      <Link>Resources\StoreLogo.png</Link>
+    </Content>
+    <Content Include="..\Craigslist8X\Resources\WideLogo.png">
+      <Link>Resources\WideLogo.png</Link>
+    </Content>
+    <None Include="..\Craigslist8X\Resources\WindowsStoreProxyTest.xml">
+      <Link>Resources\WindowsStoreProxyTest.xml</Link>
+    </None>
+    <Content Include="..\Craigslist8X\Resources\WoodGrain.jpg">
+      <Link>Resources\WoodGrain.jpg</Link>
+    </Content>
+    <None Include="Package.StoreAssociation.xml" />
+  </ItemGroup>
+  <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '11.0' ">
+    <VisualStudioVersion>11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

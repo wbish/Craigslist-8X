@@ -1,0 +1,34 @@
+﻿<UserControl
+    x:Class="WB.Craigslist8X.View.NewsContainer"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WB.Craigslist8X.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006">
+
+    <Grid Width="700" Height="700" Background="{StaticResource AppSubPanelBackground}" HorizontalAlignment="Center" VerticalAlignment="Center" Tapped="Grid_Tapped">
+        <FlipView x:Name="ItemsFlip" ItemsSource="{Binding News}" Width="700" Height="700">
+            <FlipView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Margin="20">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock x:Name="Title" TextTrimming="WordEllipsis" TextWrapping="NoWrap" Text="{Binding Title}" Style="{StaticResource SettingsHeaderStyle}" />
+                        <TextBlock Grid.Column="1" x:Name="Date" TextTrimming="None" Text="{Binding Date}" Style="{StaticResource SettingsHeaderStyle}" />
+                        
+                        <ScrollViewer Grid.Row="1" Grid.ColumnSpan="2">
+                            <TextBlock x:Name="News" TextWrapping="Wrap" Text="{Binding Content}" Style="{StaticResource SettingsTextStyle}" />
+                        </ScrollViewer>                        
+                    </Grid>
+                </DataTemplate>
+            </FlipView.ItemTemplate>
+        </FlipView>
+    </Grid>
+</UserControl>

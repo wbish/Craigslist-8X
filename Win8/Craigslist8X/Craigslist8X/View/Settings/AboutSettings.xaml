@@ -1,0 +1,24 @@
+﻿<UserControl
+    x:Class="WB.Craigslist8X.View.AboutSettings"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+    
+    <StackPanel Orientation="Vertical">
+        <TextBlock Style="{StaticResource SettingsHeaderStyle}" Text="About Craigslist 8X" />
+        <TextBlock Style="{StaticResource SettingsTextStyle}" 
+                   Text="I developed Craigslist 8X because I felt there was a need to bring a rich Craigslist experience to the new Windows platform. I hope you enjoy using the app as much as I do. Thanks to everyone that provided feedback and helped test the app." />
+
+        <TextBlock Style="{StaticResource SettingsHeaderStyle}" Text="What's next?" />
+        <TextBlock Style="{StaticResource SettingsTextStyle}" 
+                   Text="There are still many big features I want to add to Craigslist 8X. Some of those features are account management and a map view for search results." />
+
+        <TextBlock Style="{StaticResource SettingsHeaderStyle}" Text="Submit your feedback" />
+        <TextBlock Style="{StaticResource SettingsTextStyle}" 
+                   Text="I greatly value your feedback. Let me know what you think about this app by sending me an email to xation@gmail.com." />
+    </StackPanel>
+</UserControl>

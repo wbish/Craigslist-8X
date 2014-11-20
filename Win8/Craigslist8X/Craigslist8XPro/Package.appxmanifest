@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Package xmlns="http://schemas.microsoft.com/appx/2010/manifest">
+  <Identity Name="45328WilliamBishop.Craigslist8XPro" Publisher="CN=163E7B7F-E079-42A2-9D54-8923DC40887F" Version="1.6.4.0" />
+  <Properties>
+    <DisplayName>Craigslist 8X Pro</DisplayName>
+    <PublisherDisplayName>William Bishop</PublisherDisplayName>
+    <Logo>Resources\StoreLogo.png</Logo>
+  </Properties>
+  <Prerequisites>
+    <OSMinVersion>6.2.1</OSMinVersion>
+    <OSMaxVersionTested>6.2.1</OSMaxVersionTested>
+  </Prerequisites>
+  <Resources>
+    <Resource Language="x-generate" />
+  </Resources>
+  <Applications>
+    <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="Craigslist8XPro.App">
+      <VisualElements DisplayName="Craigslist 8X Pro" Logo="Resources\Logo.png" SmallLogo="Resources\SmallLogo.png" Description="Surf Craigslist with a rich and beautiful application." ForegroundText="light" BackgroundColor="#003BAE" ToastCapable="true">
+        <LockScreen Notification="badge" BadgeLogo="Resources\BadgeIcon.png" />
+        <DefaultTile ShowName="allLogos" ShortName="Craigslist 8X Pro" WideLogo="Resources\WideLogo.png" />
+        <SplashScreen Image="Resources\SplashScreen.png" BackgroundColor="#003BAE" />
+        <InitialRotationPreference>
+          <Rotation Preference="portrait" />
+          <Rotation Preference="landscape" />
+          <Rotation Preference="portraitFlipped" />
+          <Rotation Preference="landscapeFlipped" />
+        </InitialRotationPreference>
+      </VisualElements>
+      <Extensions>
+        <Extension Category="windows.search" Executable="Craigslist8XPro.exe" EntryPoint="Craigslist8X.App" />
+        <Extension Category="windows.backgroundTasks" EntryPoint="Craigslist8XTasks.SearchAgentTask">
+          <BackgroundTasks>
+            <Task Type="timer" />
+          </BackgroundTasks>
+        </Extension>
+      </Extensions>
+    </Application>
+  </Applications>
+  <Capabilities>
+    <Capability Name="internetClient" />
+    <DeviceCapability Name="location" />
+    <DeviceCapability Name="webcam" />
+  </Capabilities>
+</Package>

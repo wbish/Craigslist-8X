@@ -1,0 +1,109 @@
+﻿<UserControl
+    x:Class="WB.Craigslist8X.View.RecentlyViewedPanel"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WB.Craigslist8X.View"
+    xmlns:vm="using:WB.Craigslist8X.ViewModel"
+    xmlns:common="using:WB.Craigslist8X.Common"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:wxtx="using:WinRTXamlToolkit.Controls.Extensions"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+
+    <UserControl.Resources>
+        <ControlTemplate x:Key="ListViewTemplate" TargetType="ListView">
+            <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
+                <ScrollViewer x:Name="ScrollViewer" BringIntoViewOnFocusChange="{TemplateBinding ScrollViewer.BringIntoViewOnFocusChange}" HorizontalScrollMode="{TemplateBinding ScrollViewer.HorizontalScrollMode}" HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}" IsHorizontalRailEnabled="{TemplateBinding ScrollViewer.IsHorizontalRailEnabled}" IsHorizontalScrollChainingEnabled="{TemplateBinding ScrollViewer.IsHorizontalScrollChainingEnabled}" IsVerticalScrollChainingEnabled="{TemplateBinding ScrollViewer.IsVerticalScrollChainingEnabled}" IsVerticalRailEnabled="{TemplateBinding ScrollViewer.IsVerticalRailEnabled}" IsDeferredScrollingEnabled="{TemplateBinding ScrollViewer.IsDeferredScrollingEnabled}" TabNavigation="{TemplateBinding TabNavigation}" VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}" VerticalScrollMode="{TemplateBinding ScrollViewer.VerticalScrollMode}" ZoomMode="{TemplateBinding ScrollViewer.ZoomMode}">
+                    <ItemsPresenter PointerWheelChanged="SearchItemsList_PointerWheelChanged" HeaderTemplate="{TemplateBinding HeaderTemplate}" Header="{TemplateBinding Header}" HeaderTransitions="{TemplateBinding HeaderTransitions}" Padding="{TemplateBinding Padding}"/>
+                </ScrollViewer>
+            </Border>
+        </ControlTemplate>
+        
+        <DataTemplate x:Key="SearchItemPostSimple">
+            <Grid Background="{Binding Selected, Converter={StaticResource BoolToColorSelected}}" Height="55" Tapped="SearchItem_Tapped">
+                <ContentControl Template="{StaticResource GridItemPostHeaderSimpleNoTrack}" Margin="6,4,4,0" />
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="SearchItemPostText">
+            <Grid Background="{Binding Selected, Converter={StaticResource BoolToColorSelected}}" Height="105" Tapped="SearchItem_Tapped">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <ContentControl Grid.Row="0" Template="{StaticResource GridItemPostHeaderNoTrack}" Margin="6,4,4,0" />
+                <Grid Grid.Row="1">
+                    <TextBlock Visibility="{Binding IsLoading, Mode=OneWay, Converter={StaticResource BoolToVis}}" Text="Loading..." Foreground="Gray" Margin="6,4,4,4" />
+                    <TextBlock Text="{Binding ShortDescription}" TextWrapping="Wrap" TextTrimming="WordEllipsis" Foreground="Gray" Margin="6,4,4,4" />
+                </Grid>
+                <ContentControl Grid.Row="3" Template="{StaticResource GridItemPostFooter}" Margin="6,0,4,5" />
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="SearchItemPostThumbnail">
+            <Grid Background="{Binding Selected, Converter={StaticResource BoolToColorSelected}}" Height="105" Tapped="SearchItem_Tapped">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="105" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Border Grid.RowSpan="3" Margin="5" Height="94" Width="94" BorderBrush="#CCCCCCCC" BorderThickness="1" Background="Gray">
+                    <Image wxtx:ImageExtensions.FadeInOnLoaded="True" Stretch="UniformToFill">
+                        <Image.Source>
+                            <BitmapImage DecodePixelWidth="94" UriSource="{Binding Thumbnail}" />
+                        </Image.Source>
+                    </Image>
+                </Border>
+
+                <ContentControl Grid.Row="0" Grid.Column="1" Template="{StaticResource GridItemPostHeaderNoTrack}" Margin="0,4,4,0" />
+                <Grid Grid.Row="1" Grid.Column="1">
+                    <TextBlock Visibility="{Binding IsLoading, Mode=OneWay, Converter={StaticResource BoolToVis}}" Text="Loading..." Foreground="Gray" Margin="4" />
+                    <TextBlock Text="{Binding ShortDescription}" TextWrapping="Wrap" TextTrimming="WordEllipsis" Foreground="Gray" Margin="0,4,4,4" />
+                </Grid>
+                <ContentControl Grid.Row="3" Grid.Column="1" Template="{StaticResource GridItemPostFooter}" Margin="0,0,4,5" />
+            </Grid>
+        </DataTemplate>
+
+        <vm:PostDataTemplateSelector x:Key="PostDataTemplateSelectorKey" 
+                SearchItemPostThumbnail="{StaticResource SearchItemPostThumbnail}" 
+                SearchItemPostText="{StaticResource SearchItemPostText}"
+                SearchItemPostSimple="{StaticResource SearchItemPostSimple}">
+        </vm:PostDataTemplateSelector>
+    </UserControl.Resources>
+
+    <Border Style="{StaticResource PanelBorder}">
+        <Grid Background="{StaticResource AppSubPanelBackground}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="75" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Grid Background="{StaticResource AppHeaderBackground}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <Border>
+                    <TextBlock Text="Recently Viewed Posts" Style="{StaticResource SubPanelHeader}" />
+                </Border>
+
+                <Button Grid.Column="1" x:Name="DeleteButton" Style="{StaticResource IconButtonStyle}"  Content="&#xE107;"
+                            Tapped="DeleteButton_Tapped" />
+            </Grid>
+
+            <ProgressBar x:Name="SearchProgress" Grid.Row="1" IsIndeterminate="True" VerticalAlignment="Top" />
+            <ListView x:Name="SearchItemsList" Grid.Row="1" SelectionMode="None" IsItemClickEnabled="True" VirtualizingStackPanel.VirtualizationMode="Standard"
+                  ItemContainerStyle="{StaticResource SearchItemsItemStyle}" ItemTemplateSelector="{StaticResource PostDataTemplateSelectorKey}" 
+                  ItemsSource="{Binding PostItems}" Template="{StaticResource ListViewTemplate}" />
+            <TextBlock x:Name="NoItemsFound" Grid.Row="1" Margin="20" Style="{StaticResource TitleTextStyle}" Visibility="Collapsed" />
+        </Grid>
+    </Border>
+</UserControl>

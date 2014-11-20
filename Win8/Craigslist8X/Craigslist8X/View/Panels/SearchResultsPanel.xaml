@@ -1,0 +1,278 @@
+﻿<UserControl
+    x:Class="WB.Craigslist8X.View.SearchResultsPanel"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WB.Craigslist8X.View"
+    xmlns:vm="using:WB.Craigslist8X.ViewModel"
+    xmlns:common="using:WB.Craigslist8X.Common"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:wxtx="using:WinRTXamlToolkit.Controls.Extensions"
+    xmlns:msad="using:Microsoft.Advertising.WinRT.UI"
+    mc:Ignorable="d" d:DesignHeight="300" d:DesignWidth="400">
+
+    <UserControl.Resources>
+        <!--Neutral Templates-->
+        <ControlTemplate x:Key="SearchItemLoadMoreBase">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Stretch">
+                    <ProgressRing Visibility="{Binding LoadingMoreItems, Converter={StaticResource BoolToVis}}" IsActive="True" Width="30" Height="30" />
+                    <TextBlock Text="Tap to load more items..." Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                </StackPanel>
+            </Grid>
+        </ControlTemplate>
+        <ControlTemplate x:Key="SearchItemPostTextBase">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <ContentControl Grid.Row="0" Template="{StaticResource GridItemPostHeader}" Margin="6,4,4,0" />
+                <Grid Grid.Row="1" MinHeight="60">
+                    <TextBlock Visibility="{Binding IsLoading, Mode=OneWay, Converter={StaticResource BoolToVis}}" Text="Loading..." Foreground="Gray" Margin="6,4,4,4" />
+                    <TextBlock Text="{Binding ShortDescription}" TextWrapping="Wrap" TextTrimming="WordEllipsis" Foreground="Gray" Margin="6,4,4,4" />
+                </Grid>
+                <ContentControl Grid.Row="3" Template="{StaticResource GridItemPostFooter}" Margin="6,0,4,5" />
+            </Grid>
+        </ControlTemplate>
+        <ControlTemplate x:Key="SearchItemPostThumbnailBase">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Border Grid.RowSpan="3" Margin="5" Background="Gray" BorderBrush="#CCCCCCCC" BorderThickness="1"
+                        Height="{Binding Path=Tag, RelativeSource={RelativeSource TemplatedParent}}" Width="{Binding Path=Tag, RelativeSource={RelativeSource TemplatedParent}}">
+                    <Image wxtx:ImageExtensions.FadeInOnLoaded="True" Stretch="UniformToFill" VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <Image.Source>
+                            <BitmapImage DecodePixelWidth="{Binding Path=Tag, RelativeSource={RelativeSource TemplatedParent}}" UriSource="{Binding Thumbnail}" />
+                        </Image.Source>
+                    </Image>
+                </Border>
+
+                <ContentControl Grid.Row="0" Grid.Column="1" Template="{StaticResource GridItemPostHeader}" Margin="0,4,4,0" />
+                <Grid Grid.Row="1" Grid.Column="1">
+                    <TextBlock Visibility="{Binding IsLoading, Mode=OneWay, Converter={StaticResource BoolToVis}}" Text="Loading..." Foreground="Gray" Margin="4" />
+                    <TextBlock Text="{Binding ShortDescription}" TextWrapping="Wrap" TextTrimming="WordEllipsis" Foreground="Gray" Margin="0,4,4,4" />
+                </Grid>
+                <ContentControl Grid.Row="3" Grid.Column="1" Template="{StaticResource GridItemPostFooter}" Margin="0,0,4,5" />
+            </Grid>
+        </ControlTemplate>
+        <ControlTemplate x:Key="GridItemPostHeaderSimpleBase">
+            <Grid Margin="4" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Text="{Binding Title}" Foreground="{Binding Visited, Converter={StaticResource BoolToColorVisited}}" FontWeight="SemiBold" TextTrimming="WordEllipsis" />
+                    <TextBlock Grid.Column="1" TextAlignment="Right" Text="{Binding Price}" Foreground="Crimson" FontWeight="SemiBold" />
+                </Grid>
+
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Grid.Column="0" Text="{Binding ShortDate}" Foreground="DarkGray" Margin="0,0,15,0" />
+                    <TextBlock Grid.Column="1" Text="{Binding Location}" Foreground="{StaticResource AppThemeSecondary}" Margin="0" />
+                    <TextBlock Grid.Column="2" Text="&#xE12B;" FontFamily="Segoe UI Symbol" Foreground="DarkGray" Visibility="{Binding HasImages, Converter={StaticResource BoolToVis}}" />
+                    <TextBlock Grid.Column="3" Text="&#xE187;" FontFamily="Segoe UI Symbol" Foreground="DarkGray" Visibility="{Binding HasPictures, Converter={StaticResource BoolToVis}}" />
+                </Grid>
+            </Grid>
+        </ControlTemplate>
+
+        <!--ListView styles-->
+        <ControlTemplate x:Key="ListViewTemplate" TargetType="ListView">
+            <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
+                <ScrollViewer x:Name="ScrollViewer" BringIntoViewOnFocusChange="{TemplateBinding ScrollViewer.BringIntoViewOnFocusChange}" HorizontalScrollMode="{TemplateBinding ScrollViewer.HorizontalScrollMode}" HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}" IsHorizontalRailEnabled="{TemplateBinding ScrollViewer.IsHorizontalRailEnabled}" IsHorizontalScrollChainingEnabled="{TemplateBinding ScrollViewer.IsHorizontalScrollChainingEnabled}" IsVerticalScrollChainingEnabled="{TemplateBinding ScrollViewer.IsVerticalScrollChainingEnabled}" IsVerticalRailEnabled="{TemplateBinding ScrollViewer.IsVerticalRailEnabled}" IsDeferredScrollingEnabled="{TemplateBinding ScrollViewer.IsDeferredScrollingEnabled}" TabNavigation="{TemplateBinding TabNavigation}" VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}" VerticalScrollMode="{TemplateBinding ScrollViewer.VerticalScrollMode}" ZoomMode="{TemplateBinding ScrollViewer.ZoomMode}">
+                    <ItemsPresenter PointerWheelChanged="SearchItemsList_PointerWheelChanged" HeaderTemplate="{TemplateBinding HeaderTemplate}" Header="{TemplateBinding Header}" HeaderTransitions="{TemplateBinding HeaderTransitions}" Padding="{TemplateBinding Padding}"/>
+                </ScrollViewer>
+            </Border>
+        </ControlTemplate>
+        <DataTemplate x:Key="SearchItemLoadMoreList">
+            <Border Background="WhiteSmoke" Height="50" BorderBrush="Silver" BorderThickness="1" HorizontalAlignment="Stretch" Tapped="LoadMoreItems_Tapped">
+                <ContentControl Template="{StaticResource SearchItemLoadMoreBase}" />
+            </Border>
+        </DataTemplate>
+        <DataTemplate x:Key="SearchItemPostSimpleList">
+            <Grid Background="{Binding Selected, Converter={StaticResource BoolToColorSelected}}" Height="55" Tapped="SearchItem_Tapped">
+                <ContentControl Template="{StaticResource GridItemPostHeaderSimpleBase}" Margin="6,4,4,0" />
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="SearchItemPostTextList">
+            <Border Background="{Binding Selected, Converter={StaticResource BoolToColorSelected}}" Height="105" Tapped="SearchItem_Tapped">
+                <ContentControl Template="{StaticResource SearchItemPostTextBase}" Height="105" />
+            </Border>
+        </DataTemplate>
+        <DataTemplate x:Key="SearchItemPostThumbnailList">
+            <Border Background="{Binding Selected, Converter={StaticResource BoolToColorSelected}}" Height="105" Tapped="SearchItem_Tapped">
+                <ContentControl Template="{StaticResource SearchItemPostThumbnailBase}" Tag="94" />
+            </Border>
+        </DataTemplate>
+        <vm:PostDataTemplateSelector x:Key="PostDataListTemplateSelectorKey" 
+                SearchItemPostThumbnail="{StaticResource SearchItemPostThumbnailList}" 
+                SearchItemPostText="{StaticResource SearchItemPostTextList}"
+                SearchItemLoadMore="{StaticResource SearchItemLoadMoreList}"
+                SearchItemPostSimple="{StaticResource SearchItemPostSimpleList}">
+        </vm:PostDataTemplateSelector>
+
+        <!--GridView styles-->
+        <DataTemplate x:Key="SearchItemLoadMoreGrid">
+            <Border Background="Transparent" Height="{Binding Path=Height, RelativeSource={RelativeSource TemplatedParent}}" Tapped="LoadMoreItems_Tapped">
+                <ContentControl Template="{StaticResource SearchItemLoadMoreBase}" />
+            </Border>
+        </DataTemplate>
+        <DataTemplate x:Key="SearchItemPostSimpleGrid">
+            <Grid Background="{Binding Selected, Converter={StaticResource BoolToColorSelected}}" Height="55" Tapped="SearchItem_Tapped">
+                <ContentControl Template="{StaticResource GridItemPostHeaderSimpleBase}" Margin="6,4,4,0" />
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="SearchItemPostAdGrid">
+            <Grid Background="{Binding Selected, Converter={StaticResource BoolToColorSelected}}" Height="125" Tapped="SearchItem_Tapped">
+                <msad:AdControl ApplicationId="912a833c-811e-425d-a69c-9c038742868e" AdUnitId="110455" Height="125" Width="250" HorizontalAlignment="Center" />
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="SearchItemPostTextGrid">
+            <Border Background="{Binding Selected, Converter={StaticResource BoolToColorSelected}}" Height="125" Tapped="SearchItem_Tapped">
+                <ContentControl Template="{StaticResource SearchItemPostTextBase}" Height="125" />
+            </Border>
+        </DataTemplate>
+        <DataTemplate x:Key="SearchItemPostThumbnailGrid">
+            <Border Background="{Binding Selected, Converter={StaticResource BoolToColorSelected}}" Height="125" Tapped="SearchItem_Tapped">
+                <ContentControl Template="{StaticResource SearchItemPostThumbnailBase}" Tag="114" />
+            </Border>
+        </DataTemplate>
+        <Style x:Key="SearchResultsFullItemStyle"  TargetType="GridViewItem">
+            <Setter Property="Width" Value="425" />
+            <Setter Property="Height" Value="130" />
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+            <Setter Property="VerticalContentAlignment" Value="Stretch" />
+            <Setter Property="BorderThickness" Value="0,1,0,0"/>
+            <Setter Property="BorderBrush" Value="LightGray" />
+            <Setter Property="TabNavigation" Value="Local" />
+        </Style>
+        <Style x:Key="SearchResultsSimpleItemStyle"  TargetType="GridViewItem">
+            <Setter Property="Width" Value="425" />
+            <Setter Property="Height" Value="55" />
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="Margin" Value="0,0,8,8" />
+            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+            <Setter Property="VerticalContentAlignment" Value="Stretch" />
+            <Setter Property="BorderThickness" Value="0,1,0,0"/>
+            <Setter Property="BorderBrush" Value="LightGray" />
+            <Setter Property="TabNavigation" Value="Local" />
+        </Style>
+        <vm:PostDataTemplateSelector x:Key="PostDataGridTemplateSelectorKey" 
+                SearchItemPostThumbnail="{StaticResource SearchItemPostThumbnailGrid}" 
+                SearchItemPostText="{StaticResource SearchItemPostTextGrid}"
+                SearchItemLoadMore="{StaticResource SearchItemLoadMoreGrid}"
+                SearchItemPostSimple="{StaticResource SearchItemPostSimpleGrid}"
+                SearchItemAd="{StaticResource SearchItemPostAdGrid}">
+        </vm:PostDataTemplateSelector>
+        <vm:PostGridItemStyleSelector x:Key="PostGridItemStyleSelectorKey" 
+                SearchItemPostFull="{StaticResource SearchResultsFullItemStyle}" 
+                SearchItemPostSimple="{StaticResource SearchResultsSimpleItemStyle}">
+        </vm:PostGridItemStyleSelector>
+    </UserControl.Resources>
+
+    <Border Style="{StaticResource PanelBorder}">
+        <Grid Background="{StaticResource AppSubPanelBackground}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="75" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Border Background="{StaticResource AppHeaderBackground}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <CheckBox x:Name="ExpandViewButton" Style="{StaticResource IconButtonStyle}" Grid.Column="0" Content="&#x2B0C;"
+                        Tapped="ExpandViewButton_Tapped" />
+                    <TextBlock x:Name="SearchTitle" Style="{StaticResource SubPanelHeader}" Grid.Column="1" />
+                    <Button x:Name="MoreOptionsButton" Style="{StaticResource IconButtonStyle}" Grid.Column="2" Content="&#xE10C;"
+                        Tapped="MoreOptionsButton_Tapped" Margin="0,5,0,0"/>
+                    <CheckBox x:Name="SortButton" Style="{StaticResource IconButtonStyle}" Grid.Column="3" Content="&#xE174;"
+                        Tapped="SortButton_Tapped" IsChecked="{Binding SortSet, Mode=OneWay}" />
+                    <CheckBox x:Name="FilterButton" Style="{StaticResource IconButtonStyle}" Grid.Column="4" Content="&#xE16E;"
+                        Tapped="FilterButton_Tapped" IsChecked="{Binding FiltersSet, Mode=OneWay}" />
+                </Grid>
+            </Border>
+
+            <ProgressBar x:Name="SearchProgress" Grid.Row="1" IsIndeterminate="True" VerticalAlignment="Top" />
+
+            <Grid Grid.Row="1" x:Name="ListViewResultsGrid">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Grid>                    
+                    <ComboBox ItemsSource="{Binding SearchCities}" SelectedItem="{Binding SelectedCity, Mode=TwoWay}" DisplayMemberPath="DisplayName" 
+                              Height="40" HorizontalAlignment="Stretch" SelectionChanged="ComboBox_SelectionChanged" Margin="10" />
+                </Grid>
+
+                <TextBlock x:Name="NoResultsMessageList" Grid.Row="1" Margin="20" Style="{StaticResource TitleTextStyle}" Visibility="Collapsed" />
+                <ListView x:Name="SearchItemsList" Grid.Row="1" SelectionMode="None" IsItemClickEnabled="True" VirtualizingStackPanel.VirtualizationMode="Recycling"
+                  ItemContainerStyle="{StaticResource SearchItemsItemStyle}" ItemTemplateSelector="{StaticResource PostDataListTemplateSelectorKey}" 
+                  ItemsSource="{Binding PostItems}" Template="{StaticResource ListViewTemplate}" />
+            </Grid>
+            
+            <Grid Grid.Row="1" x:Name="GridViewResultsGrid" Visibility="Collapsed">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Grid MinHeight="60">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <ComboBox Grid.Column="0" ItemsSource="{Binding SearchCities}" SelectedItem="{Binding SelectedCity, Mode=TwoWay}" DisplayMemberPath="DisplayName" 
+                              Width="300" Height="40" HorizontalAlignment="Left" Margin="10,0,10,0" />
+                    <msad:AdControl Grid.Column="1" Visibility="{Binding ShowAds, Converter={StaticResource BoolToVis}}"  x:Name="AdBar" ApplicationId="912a833c-811e-425d-a69c-9c038742868e" AdUnitId="110457" Height="60" Width="292" HorizontalAlignment="Center" Margin="10" />
+                    <ToggleSwitch x:Name="ToggleCollapseGrid" Grid.Column="2" Header="Collapse on selection" IsOn="{Binding CollapseOnSelection, Mode=TwoWay}" Margin="10,0,0,0" />
+                </Grid>
+
+                <Grid Grid.Row="1" x:Name="SearchResultsBackground" Background="Transparent" ManipulationMode="TranslateInertia,TranslateX" ManipulationStarted="SearchResultsBackground_ManipulationStarted">
+                    <TextBlock x:Name="NoResultsMessageGrid" Margin="20" Style="{StaticResource TitleTextStyle}" Visibility="Collapsed" />
+                    
+                    <GridView x:Name="SearchItemsGrid"  SelectionMode="None" IsItemClickEnabled="True" VirtualizingStackPanel.VirtualizationMode="Recycling"
+                    ItemsSource="{Binding PostItems}" ItemTemplateSelector="{StaticResource PostDataGridTemplateSelectorKey}" 
+                    ItemContainerStyleSelector="{StaticResource PostGridItemStyleSelectorKey}" />
+                </Grid>
+            </Grid>
+        </Grid>
+    </Border>
+</UserControl>

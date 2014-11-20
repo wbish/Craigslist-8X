@@ -1,0 +1,132 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Craigslist8X", "Craigslist8X\Craigslist8X.csproj", "{467973D0-B045-4ECB-AD8A-E2E7933EC54D}"
+	ProjectSection(ProjectDependencies) = postProject
+		{3C43C538-2C2B-4EF8-9C4F-81F0AC33EBEA} = {3C43C538-2C2B-4EF8-9C4F-81F0AC33EBEA}
+		{03A0B23F-6BA1-45DC-886C-3D62D6FE8224} = {03A0B23F-6BA1-45DC-886C-3D62D6FE8224}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CraigslistApi", "CraigslistApi\CraigslistApi.csproj", "{03A0B23F-6BA1-45DC-886C-3D62D6FE8224}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{1CAAEC78-4F81-42D3-8471-9654E948F1A2}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WB.SDK", "..\WB\WB.SDK\WB.SDK.csproj", "{3C43C538-2C2B-4EF8-9C4F-81F0AC33EBEA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Craigslist8XPro", "Craigslist8XPro\Craigslist8XPro.csproj", "{7C65DDA8-D2DF-41D1-8CA4-D1363D08C9D4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Craigslist8XTasks", "Craigslist8XTasks\Craigslist8XTasks.csproj", "{ED20CCB3-8A80-4C30-A91C-0FCAC0B70F36}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 6
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://wsbishop.org:8080/tfs/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = CraigslistApi\\CraigslistApi.csproj
+		SccProjectName1 = CraigslistApi
+		SccLocalPath1 = CraigslistApi
+		SccProjectUniqueName2 = ..\\WB\\WB.SDK\\WB.SDK.csproj
+		SccProjectName2 = ../WB/WB.SDK
+		SccLocalPath2 = ..\\WB\\WB.SDK
+		SccProjectUniqueName3 = Craigslist8X\\Craigslist8X.csproj
+		SccProjectName3 = Craigslist8X
+		SccLocalPath3 = Craigslist8X
+		SccProjectUniqueName4 = Craigslist8XPro\\Craigslist8XPro.csproj
+		SccProjectName4 = Craigslist8XPro
+		SccLocalPath4 = Craigslist8XPro
+		SccProjectUniqueName5 = Craigslist8XTasks\\Craigslist8XTasks.csproj
+		SccProjectName5 = Craigslist8XTasks
+		SccLocalPath5 = Craigslist8XTasks
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|ARM = Debug|ARM
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|ARM = Release|ARM
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{467973D0-B045-4ECB-AD8A-E2E7933EC54D}.Debug|ARM.ActiveCfg = Debug|ARM
+		{467973D0-B045-4ECB-AD8A-E2E7933EC54D}.Debug|ARM.Build.0 = Debug|ARM
+		{467973D0-B045-4ECB-AD8A-E2E7933EC54D}.Debug|ARM.Deploy.0 = Debug|ARM
+		{467973D0-B045-4ECB-AD8A-E2E7933EC54D}.Debug|x64.ActiveCfg = Debug|x64
+		{467973D0-B045-4ECB-AD8A-E2E7933EC54D}.Debug|x64.Build.0 = Debug|x64
+		{467973D0-B045-4ECB-AD8A-E2E7933EC54D}.Debug|x64.Deploy.0 = Debug|x64
+		{467973D0-B045-4ECB-AD8A-E2E7933EC54D}.Debug|x86.ActiveCfg = Debug|x86
+		{467973D0-B045-4ECB-AD8A-E2E7933EC54D}.Debug|x86.Build.0 = Debug|x86
+		{467973D0-B045-4ECB-AD8A-E2E7933EC54D}.Debug|x86.Deploy.0 = Debug|x86
+		{467973D0-B045-4ECB-AD8A-E2E7933EC54D}.Release|ARM.ActiveCfg = Release|ARM
+		{467973D0-B045-4ECB-AD8A-E2E7933EC54D}.Release|ARM.Build.0 = Release|ARM
+		{467973D0-B045-4ECB-AD8A-E2E7933EC54D}.Release|ARM.Deploy.0 = Release|ARM
+		{467973D0-B045-4ECB-AD8A-E2E7933EC54D}.Release|x64.ActiveCfg = Release|x64
+		{467973D0-B045-4ECB-AD8A-E2E7933EC54D}.Release|x64.Build.0 = Release|x64
+		{467973D0-B045-4ECB-AD8A-E2E7933EC54D}.Release|x64.Deploy.0 = Release|x64
+		{467973D0-B045-4ECB-AD8A-E2E7933EC54D}.Release|x86.ActiveCfg = Release|x86
+		{467973D0-B045-4ECB-AD8A-E2E7933EC54D}.Release|x86.Build.0 = Release|x86
+		{467973D0-B045-4ECB-AD8A-E2E7933EC54D}.Release|x86.Deploy.0 = Release|x86
+		{03A0B23F-6BA1-45DC-886C-3D62D6FE8224}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{03A0B23F-6BA1-45DC-886C-3D62D6FE8224}.Debug|ARM.Build.0 = Debug|Any CPU
+		{03A0B23F-6BA1-45DC-886C-3D62D6FE8224}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{03A0B23F-6BA1-45DC-886C-3D62D6FE8224}.Debug|x64.Build.0 = Debug|Any CPU
+		{03A0B23F-6BA1-45DC-886C-3D62D6FE8224}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{03A0B23F-6BA1-45DC-886C-3D62D6FE8224}.Debug|x86.Build.0 = Debug|Any CPU
+		{03A0B23F-6BA1-45DC-886C-3D62D6FE8224}.Release|ARM.ActiveCfg = Release|Any CPU
+		{03A0B23F-6BA1-45DC-886C-3D62D6FE8224}.Release|ARM.Build.0 = Release|Any CPU
+		{03A0B23F-6BA1-45DC-886C-3D62D6FE8224}.Release|x64.ActiveCfg = Release|Any CPU
+		{03A0B23F-6BA1-45DC-886C-3D62D6FE8224}.Release|x64.Build.0 = Release|Any CPU
+		{03A0B23F-6BA1-45DC-886C-3D62D6FE8224}.Release|x86.ActiveCfg = Release|Any CPU
+		{03A0B23F-6BA1-45DC-886C-3D62D6FE8224}.Release|x86.Build.0 = Release|Any CPU
+		{3C43C538-2C2B-4EF8-9C4F-81F0AC33EBEA}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{3C43C538-2C2B-4EF8-9C4F-81F0AC33EBEA}.Debug|ARM.Build.0 = Debug|Any CPU
+		{3C43C538-2C2B-4EF8-9C4F-81F0AC33EBEA}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{3C43C538-2C2B-4EF8-9C4F-81F0AC33EBEA}.Debug|x64.Build.0 = Debug|Any CPU
+		{3C43C538-2C2B-4EF8-9C4F-81F0AC33EBEA}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{3C43C538-2C2B-4EF8-9C4F-81F0AC33EBEA}.Debug|x86.Build.0 = Debug|Any CPU
+		{3C43C538-2C2B-4EF8-9C4F-81F0AC33EBEA}.Release|ARM.ActiveCfg = Release|Any CPU
+		{3C43C538-2C2B-4EF8-9C4F-81F0AC33EBEA}.Release|ARM.Build.0 = Release|Any CPU
+		{3C43C538-2C2B-4EF8-9C4F-81F0AC33EBEA}.Release|x64.ActiveCfg = Release|Any CPU
+		{3C43C538-2C2B-4EF8-9C4F-81F0AC33EBEA}.Release|x64.Build.0 = Release|Any CPU
+		{3C43C538-2C2B-4EF8-9C4F-81F0AC33EBEA}.Release|x86.ActiveCfg = Release|Any CPU
+		{3C43C538-2C2B-4EF8-9C4F-81F0AC33EBEA}.Release|x86.Build.0 = Release|Any CPU
+		{7C65DDA8-D2DF-41D1-8CA4-D1363D08C9D4}.Debug|ARM.ActiveCfg = Debug|ARM
+		{7C65DDA8-D2DF-41D1-8CA4-D1363D08C9D4}.Debug|ARM.Build.0 = Debug|ARM
+		{7C65DDA8-D2DF-41D1-8CA4-D1363D08C9D4}.Debug|ARM.Deploy.0 = Debug|ARM
+		{7C65DDA8-D2DF-41D1-8CA4-D1363D08C9D4}.Debug|x64.ActiveCfg = Debug|x64
+		{7C65DDA8-D2DF-41D1-8CA4-D1363D08C9D4}.Debug|x64.Build.0 = Debug|x64
+		{7C65DDA8-D2DF-41D1-8CA4-D1363D08C9D4}.Debug|x64.Deploy.0 = Debug|x64
+		{7C65DDA8-D2DF-41D1-8CA4-D1363D08C9D4}.Debug|x86.ActiveCfg = Debug|x86
+		{7C65DDA8-D2DF-41D1-8CA4-D1363D08C9D4}.Debug|x86.Build.0 = Debug|x86
+		{7C65DDA8-D2DF-41D1-8CA4-D1363D08C9D4}.Debug|x86.Deploy.0 = Debug|x86
+		{7C65DDA8-D2DF-41D1-8CA4-D1363D08C9D4}.Release|ARM.ActiveCfg = Release|ARM
+		{7C65DDA8-D2DF-41D1-8CA4-D1363D08C9D4}.Release|ARM.Build.0 = Release|ARM
+		{7C65DDA8-D2DF-41D1-8CA4-D1363D08C9D4}.Release|ARM.Deploy.0 = Release|ARM
+		{7C65DDA8-D2DF-41D1-8CA4-D1363D08C9D4}.Release|x64.ActiveCfg = Release|x64
+		{7C65DDA8-D2DF-41D1-8CA4-D1363D08C9D4}.Release|x64.Build.0 = Release|x64
+		{7C65DDA8-D2DF-41D1-8CA4-D1363D08C9D4}.Release|x64.Deploy.0 = Release|x64
+		{7C65DDA8-D2DF-41D1-8CA4-D1363D08C9D4}.Release|x86.ActiveCfg = Release|x86
+		{7C65DDA8-D2DF-41D1-8CA4-D1363D08C9D4}.Release|x86.Build.0 = Release|x86
+		{7C65DDA8-D2DF-41D1-8CA4-D1363D08C9D4}.Release|x86.Deploy.0 = Release|x86
+		{ED20CCB3-8A80-4C30-A91C-0FCAC0B70F36}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{ED20CCB3-8A80-4C30-A91C-0FCAC0B70F36}.Debug|ARM.Build.0 = Debug|Any CPU
+		{ED20CCB3-8A80-4C30-A91C-0FCAC0B70F36}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{ED20CCB3-8A80-4C30-A91C-0FCAC0B70F36}.Debug|x64.Build.0 = Debug|Any CPU
+		{ED20CCB3-8A80-4C30-A91C-0FCAC0B70F36}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{ED20CCB3-8A80-4C30-A91C-0FCAC0B70F36}.Debug|x86.Build.0 = Debug|Any CPU
+		{ED20CCB3-8A80-4C30-A91C-0FCAC0B70F36}.Release|ARM.ActiveCfg = Release|ARM
+		{ED20CCB3-8A80-4C30-A91C-0FCAC0B70F36}.Release|ARM.Build.0 = Release|ARM
+		{ED20CCB3-8A80-4C30-A91C-0FCAC0B70F36}.Release|x64.ActiveCfg = Release|x64
+		{ED20CCB3-8A80-4C30-A91C-0FCAC0B70F36}.Release|x64.Build.0 = Release|x64
+		{ED20CCB3-8A80-4C30-A91C-0FCAC0B70F36}.Release|x86.ActiveCfg = Release|x86
+		{ED20CCB3-8A80-4C30-A91C-0FCAC0B70F36}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

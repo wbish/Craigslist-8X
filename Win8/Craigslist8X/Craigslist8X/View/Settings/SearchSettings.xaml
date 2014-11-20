@@ -1,0 +1,116 @@
+﻿<UserControl
+    x:Class="WB.Craigslist8X.View.SearchSettings"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WB.Craigslist8X.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+
+    <UserControl.Resources>
+        <Style x:Key="PickerItemStyle"  TargetType="ListViewItem">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Foreground" Value="Black" />
+            <Setter Property="FontFamily" Value="Segoe UI Light" />
+            <Setter Property="HorizontalAlignment" Value="Stretch" />
+            <Setter Property="Margin" Value="0,5,0,5" />
+            <Setter Property="Padding" Value="15,0,5,0" />
+            <Setter Property="Height" Value="50" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListViewItem">
+                        <Border Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}">
+
+                            <ContentPresenter x:Name="ContentPresenter" FontFamily="Segoe UI" FontSize="16" VerticalAlignment="Center" />
+
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal" />
+                                    <VisualState x:Name="Pressed"/>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="CityItemStyle"  TargetType="ListViewItem">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Foreground" Value="Black" />
+            <Setter Property="FontFamily" Value="Segoe UI Light" />
+            <Setter Property="HorizontalAlignment" Value="Stretch" />
+            <Setter Property="Margin" Value="0,5,0,5" />
+            <Setter Property="Padding" Value="0,0,5,0" />
+            <Setter Property="Height" Value="35" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListViewItem">
+                        <Border Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}">
+
+                            <ContentPresenter x:Name="ContentPresenter" FontFamily="Segoe UI" FontSize="16" VerticalAlignment="Center" />
+
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal" />
+                                    <VisualState x:Name="Pressed"/>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <DataTemplate x:Key="CityItemTemplate">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Text="&#xE10A;" FontFamily="Segoe UI Symbol" VerticalAlignment="Center" Tapped="RemoveCity_Tapped"
+                    Visibility="{Binding ElementName=SearchCities, Path=DataContext.RemoveCityEnabled, Converter={StaticResource BoolToVis}}" />
+                <TextBlock Grid.Column="1" Text="{Binding DisplayName}" VerticalAlignment="Center" Margin="15,0,0,0" />
+                <TextBlock Grid.Column="2" Text="&#xE11C;" FontFamily="Segoe UI Symbol" VerticalAlignment="Center" Tapped="MoveCityToTop_Tapped"
+                    Visibility="{Binding ElementName=SearchCities, Path=DataContext.RemoveCityEnabled, Converter={StaticResource BoolToVis}}" />
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate x:Key="CategoryPickerItemTemplate">
+            <Grid Tapped="Category_Tapped">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="30" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Text="{Binding}" VerticalAlignment="Center" />
+                <TextBlock Grid.Column="1" Text="&#xE0E3;" FontFamily="Segoe UI Symbol" Foreground="LightGray" FontSize="28" VerticalAlignment="Center" />
+            </Grid>
+        </DataTemplate>
+    </UserControl.Resources>
+
+    <StackPanel Orientation="Vertical">
+        <!-- Search City -->
+        <TextBlock Style="{StaticResource SettingsHeaderStyle}" Text="Search City" />
+        <TextBlock x:Name="GetStarted" Text="Thanks for choosing Craigslist 8X! To get started, tap &quot;Add City&quot; to select a city near you."
+                   Style="{StaticResource BaselineTextStyle}" FontSize="16" FontWeight="Bold" />
+        <ListView x:Name="SearchCities" ItemsSource="{Binding SearchCities}" ItemTemplate="{StaticResource CityItemTemplate}" 
+            ItemContainerStyle="{StaticResource CityItemStyle}" Margin="0,10,0,10" />
+        <Button x:Name="AddCity" Content="Add City" Tapped="AddCity_Tapped" Width="275" Height="35" Margin="0,5,0,15" />
+
+        <!-- Search Category -->
+        <TextBlock Style="{StaticResource SettingsHeaderStyle}" Text="Search Category" />
+        <TextBlock Text="{Binding SearchCategory}" Style="{StaticResource BasicTextStyle}" FontWeight="Bold" Margin="0,10,0,10"  />
+        <Button x:Name="ChangeCategory" Content="Change Category" Tapped="ChangeCategory_Tapped" Width="275" Height="35" Margin="0,5,0,15" />
+        <ListView x:Name="CategorySelector" Background="#EEEEEE" Height="400" Visibility="Collapsed" ScrollViewer.IsVerticalScrollChainingEnabled="False"
+            ItemContainerStyle="{StaticResource PickerItemStyle}" ItemTemplate="{StaticResource CategoryPickerItemTemplate}" />
+        
+        <!-- Search Settings -->
+        <TextBlock Style="{StaticResource SettingsHeaderStyle}" Text="Search Settings" />
+        <ToggleSwitch x:Name="PicturesOnlyToggle" Header="Only show results with pictures" Margin="0,0,0,15" Width="300" IsOn="{Binding PostsPicturesOnly, Mode=TwoWay}" />
+        <ToggleSwitch x:Name="TitlesOnlyToggle" Header="Only search titles" Margin="0,0,0,15" Width="300" IsOn="{Binding SearchTitlesOnly, Mode=TwoWay}" />
+        <ToggleSwitch x:Name="DetailsToggle" Header="Preview post in search results" Margin="0,0,0,15" Width="300" IsOn="{Binding DetailedSearchResults, Mode=TwoWay}" />
+    </StackPanel>
+</UserControl>
